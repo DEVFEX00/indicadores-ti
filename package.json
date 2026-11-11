@@ -1,0 +1,12 @@
+{
+  "name": "dashboard-indicadores-ti",
+  "version": "1.0.0",
+  "description": "Dashboard Executivo de Indicadores de TI editável com persistência e proteção por senha",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["dashboard", "ti", "kpi", "indicadores", "metrics"],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard TI</title>
+    <style>
+      :root {
+        --bg: #040404;
+        --bg-soft: #0b0f0b;
+        --panel: rgba(14, 18, 14, 0.92);
+        --panel-strong: rgba(20, 24, 20, 0.98);
+        --text: #eef6ee;
+        --muted: #8e9a8e;
+        --accent: #32cd32;
+        --accent-soft: rgba(50, 205, 50, 0.14);
+        --border: rgba(50, 205, 50, 0.18);
+        --danger: #ff6b6b;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(50, 205, 50, 0.14), transparent 26%),
+          radial-gradient(circle at top right, rgba(50, 205, 50, 0.08), transparent 22%),
+          linear-gradient(180deg, #050505 0%, #080808 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 95%);
+      }
+
+      .app {
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1.35fr 0.95fr;
+        gap: 24px;
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        background:
+          linear-gradient(135deg, rgba(50, 205, 50, 0.08), transparent 48%),
+          linear-gradient(180deg, rgba(16, 18, 16, 0.98), rgba(8, 10, 8, 0.96));
+        box-shadow: var(--shadow);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -8% -45% auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(50, 205, 50, 0.35), transparent 62%);
+        filter: blur(28px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        padding: 8px 14px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(50, 205, 50, 0.08);
+        color: #ccf7cc;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 14px rgba(50, 205, 50, 0.75);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.02;
+      }
+
+      .hero-copy p {
+        max-width: 62ch;
+        margin: 18px 0 0;
+        color: #c4cec4;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .people-list {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .person-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.025);
+        backdrop-filter: blur(6px);
+      }
+
+      .person-row span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .person-row strong {
+        font-size: 1rem;
+        color: var(--text);
+      }
+
+      .content {
+        margin-top: 24px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .summary-card {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        gap: 18px;
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-radius: 26px;
+        background:
+          linear-gradient(125deg, rgba(50, 205, 50, 0.1), transparent 45%),
+          linear-gradient(180deg, var(--panel-strong), var(--panel));
+        box-shadow: var(--shadow);
+      }
+
+      .summary-card::after {
+        content: "";
+        position: absolute;
+        top: -32px;
+        right: -32px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 1px solid rgba(50, 205, 50, 0.16);
+        opacity: 0.65;
+      }
+
+      .summary-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .summary-label {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: #cbf7cb;
+        font-size: 0.86rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .summary-rate {
+        display: block;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        line-height: 0.95;
+      }
+
+      .summary-meta,
+      .summary-status,
+      .summary-detail {
+        margin: 0;
+      }
+
+      .summary-meta {
+        color: #c6d0c6;
+      }
+
+      .summary-status {
+        font-weight: 700;
+      }
+
+      .summary-status.alert {
+        color: #ffd3d3;
+      }
+
+      .summary-pill {
+        align-self: start;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(50, 205, 50, 0.08);
+        font-size: 0.88rem;
+        color: #dbf8db;
+      }
+
+      .summary-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .summary-stat {
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .summary-stat span {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .summary-stat strong {
+        font-size: 1.5rem;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .member-card {
+        display: grid;
+        gap: 18px;
+        padding: 24px;
+        border-radius: 24px;
+        border: 1px solid rgba(50, 205, 50, 0.16);
+        background:
+          linear-gradient(180deg, rgba(18, 21, 18, 0.96), rgba(10, 12, 10, 0.98));
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      }
+
+      .member-head {
+        display: grid;
+        gap: 8px;
+      }
+
+      .role {
+        color: #d4f8d4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      .member-head h2 {
+        margin: 0;
+        font-size: 1.55rem;
+      }
+
+      .member-rate {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 12px;
+      }
+
+      .member-rate strong {
+        font-size: 2rem;
+      }
+
+      .member-rate span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .metric-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .metric span {
+        color: var(--muted);
+      }
+
+      .metric strong {
+        color: var(--text);
+      }
+
+      .progress-block {
+        display: grid;
+        gap: 10px;
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .progress-track {
+        width: 100%;
+        height: 12px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .progress-bar {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #1f8f1f 0%, #32cd32 100%);
+        box-shadow: 0 0 20px rgba(50, 205, 50, 0.35);
+      }
+
+      .status-ok {
+        color: #c6fbc6;
+      }
+
+      .status-alert {
+        color: var(--danger);
+      }
+
+      @media (max-width: 1080px) {
+        .hero,
+        .team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .app {
+          width: min(100% - 20px, 1200px);
+          padding-top: 20px;
+        }
+
+        .hero,
+        .summary-stats,
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 24px;
+        }
+
+        .summary-card,
+        .member-card {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Indicadores Mensais do TI</span>
+          <h1>Visao mensal do desempenho do departamento de TI.</h1>
+          <p>
+            Dashboard executivo com leitura rapida de abertos, resolvidos,
+            percentual individual e desempenho total do setor em relacao a meta
+            mensal acima de 80%.
+          </p>
+        </div>
+        <div class="people-list" id="people-list"></div>
+      </header>
+
+      <main class="content">
+        <section id="summary"></section>
+        <section class="team-grid" id="team-grid"></section>
+      </main>
+    </div>
+
+    <script>
+      const team = [
+        { role: "CTO", name: "Pedro", opened: 5, resolved: 1 },
+        { role: "Supervisor", name: "Frank", opened: 2, resolved: 2 },
+        { role: "Analista", name: "Clever", opened: 21, resolved: 48 },
+        { role: "Estagiario", name: "Kauan", opened: 3, resolved: 5 },
+      ];
+
+      const goal = 80;
+
+      const formatPercent = (value) =>
+        `${value.toFixed(2).replace(".", ",")}%`;
+
+      const calculateRate = (opened, resolved) => {
+        const total = opened + resolved;
+        if (!total) return 0;
+        return (resolved / total) * 100;
+      };
+
+      const totals = team.reduce(
+        (acc, person) => {
+          acc.opened += person.opened;
+          acc.resolved += person.resolved;
+          return acc;
+        },
+        { opened: 0, resolved: 0 }
+      );
+
+      const departmentRate = calculateRate(totals.opened, totals.resolved);
+      const goalReached = departmentRate > goal;
+
+      const summary = document.getElementById("summary");
+      const teamGrid = document.getElementById("team-grid");
+      const peopleList = document.getElementById("people-list");
+
+      peopleList.innerHTML = team
+        .map(
+          (person) => `
+            <article class="person-row">
+              <div>
+                <span>${person.role}</span>
+                <strong>${person.name}</strong>
+              </div>
+              <strong>${formatPercent(calculateRate(person.opened, person.resolved))}</strong>
+            </article>
+          `
+        )
+        .join("");
+
+      summary.innerHTML = `
+        <section class="summary-card">
+          <div class="summary-top">
+            <div>
+              <span class="summary-label">Resultado do departamento</span>
+              <strong class="summary-rate">${formatPercent(departmentRate)}</strong>
+              <p class="summary-meta">Meta do departamento: acima de ${goal}%</p>
+              <p class="summary-status ${goalReached ? "status-ok" : "status-alert"}">
+                ${goalReached ? "Meta atingida" : "Meta nao atingida"}
+              </p>
+            </div>
+            <div class="summary-pill">Total limitado visualmente a 100%</div>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label">
+              <span>Progresso total</span>
+              <strong>${formatPercent(Math.min(departmentRate, 100))}</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" style="width: ${Math.min(departmentRate, 100)}%;"></div>
+            </div>
+          </div>
+          <div class="summary-stats">
+            <article class="summary-stat">
+              <span>Total abertos</span>
+              <strong>${totals.opened}</strong>
+            </article>
+            <article class="summary-stat">
+              <span>Total resolvidos</span>
+              <strong>${totals.resolved}</strong>
+            </article>
+            <article class="summary-stat">
+              <span>Resultado atual</span>
+              <strong>${formatPercent(departmentRate)}</strong>
+            </article>
+          </div>
+        </section>
+      `;
+
+      teamGrid.innerHTML = team
+        .map((person) => {
+          const rate = calculateRate(person.opened, person.resolved);
+          const safeRate = Math.max(0, Math.min(rate, 100));
+
+          return `
+            <article class="member-card">
+              <div class="member-head">
+                <span class="role">${person.role}</span>
+                <h2>${person.name}</h2>
+              </div>
+              <div class="member-rate">
+                <div>
+                  <span>Percentual individual</span>
+                  <strong>${formatPercent(rate)}</strong>
+                </div>
+                <span>${person.resolved} resolvidos</span>
+              </div>
+              <div class="metric-list">
+                <div class="metric">
+                  <span>Abertos</span>
+                  <strong>${person.opened}</strong>
+                </div>
+                <div class="metric">
+                  <span>Resolvidos</span>
+                  <strong>${person.resolved}</strong>
+                </div>
+                <div class="metric">
+                  <span>Total tratado</span>
+                  <strong>${person.opened + person.resolved}</strong>
+                </div>
+              </div>
+              <div class="progress-block">
+                <div class="progress-label">
+                  <span>Resolvidos / total</span>
+                  <strong>${formatPercent(rate)}</strong>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar" style="width: ${safeRate}%;"></div>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+    </script>
+  </body>
+</html>
