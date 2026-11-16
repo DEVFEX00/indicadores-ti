@@ -526,7 +526,8 @@ body::before {
 
 .perf-column ul {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 0;
+  list-style: none;
   color: #d1d5db;
   font-size: 0.92rem;
 }
@@ -534,6 +535,12 @@ body::before {
 .perf-column li {
   margin-bottom: 8px;
   line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.perf-column li.empty-line {
+  min-height: 1.2em;
+  margin-bottom: 4px;
 }
 
 /* Tabelas Customizadas (Ex: Marketing e Ciclos) */
@@ -893,6 +900,9 @@ body::before {
 .project-info-block p {
   margin: 0;
   color: #e5e7eb;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
 }
 
 /* CARDS DE PLANEJAMENTO / ROADMAP */
@@ -929,13 +939,21 @@ body::before {
 
 .plan-card ul {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 0;
+  list-style: none;
   color: #d1d5db;
   font-size: 0.92rem;
 }
 
 .plan-card li {
   margin-bottom: 8px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.plan-card li.empty-line {
+  min-height: 1.2em;
+  margin-bottom: 4px;
 }
 
 /* MODAIS E FORMULÁRIOS DE EDIÇÃO TOTAL */

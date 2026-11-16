@@ -224,6 +224,19 @@ function escapeHtml(text) {
     .replace(/'/g, "&#039;");
 }
 
+function renderTextLines(items) {
+  if (!items || !items.length) return "";
+  return items
+    .map((item) => {
+      const trimmed = item.trim();
+      if (!trimmed) {
+        return '<li class="empty-line">&nbsp;</li>';
+      }
+      return `<li>${escapeHtml(item)}</li>`;
+    })
+    .join("");
+}
+
 function loadData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_DATA);
@@ -323,13 +336,13 @@ function renderCertificates() {
       <div class="perf-column positive">
         <h5>✅ O que Melhorou / Destaques</h5>
         <ul>
-          ${cert.improved.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(cert.improved)}
         </ul>
       </div>
       <div class="perf-column warning">
         <h5>⚠️ Pontos de Atenção</h5>
         <ul>
-          ${cert.attention.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(cert.attention)}
         </ul>
       </div>
     </div>
@@ -390,13 +403,13 @@ function renderMarketing() {
       <div class="perf-column positive">
         <h5>✅ Destaques Positivos</h5>
         <ul>
-          ${mkt.improved.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(mkt.improved)}
         </ul>
       </div>
       <div class="perf-column warning">
         <h5>⚠️ Pontos de Atenção</h5>
         <ul>
-          ${mkt.attention.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(mkt.attention)}
         </ul>
       </div>
     </div>
@@ -557,13 +570,13 @@ function renderTickets() {
       <div class="perf-column positive">
         <h5>✅ Evolução Positiva</h5>
         <ul>
-          ${t.improved.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(t.improved)}
         </ul>
       </div>
       <div class="perf-column warning">
         <h5>⚠️ Pontos de Atenção</h5>
         <ul>
-          ${t.attention.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(t.attention)}
         </ul>
       </div>
     </div>
@@ -604,13 +617,13 @@ function renderCommunities() {
       <div class="perf-column positive">
         <h5>✅ Destaques do Mês</h5>
         <ul>
-          ${com.improved.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(com.improved)}
         </ul>
       </div>
       <div class="perf-column warning">
         <h5>⚠️ Pontos de Atenção</h5>
         <ul>
-          ${com.attention.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          ${renderTextLines(com.attention)}
         </ul>
       </div>
     </div>
@@ -664,7 +677,7 @@ function renderPlanning() {
         </div>
         <h4>${escapeHtml(cat.title)}</h4>
         <ul>
-          ${cat.items.map((it) => `<li>${escapeHtml(it)}</li>`).join("")}
+          ${renderTextLines(cat.items)}
         </ul>
       </article>
     `
@@ -1136,9 +1149,8 @@ masterEditorForm.addEventListener("submit", (e) => {
   document.querySelectorAll(".plan-cat-card").forEach((c) => {
     const rawItems = c.querySelector(".plan-cat-items").value;
     const items = rawItems
-      .split("\n")
-      .map((it) => it.trim())
-      .filter((it) => it.length > 0);
+      .replace(/\r\n/g, "\n")
+      .split("\n");
     planCategories.push({
       title: c.querySelector(".plan-cat-title").value.trim(),
       items: items,
@@ -1147,9 +1159,8 @@ masterEditorForm.addEventListener("submit", (e) => {
 
   const parseLines = (text) =>
     text
-      .split("\n")
-      .map((l) => l.trim())
-      .filter((l) => l.length > 0);
+      .replace(/\r\n/g, "\n")
+      .split("\n");
 
   // Montagem do objeto atualizado
   const updatedData = {
