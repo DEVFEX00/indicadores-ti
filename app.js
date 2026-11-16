@@ -5,6 +5,9 @@
 const STORAGE_KEY_DATA = "dashboard_ti_full_data_v2";
 const STORAGE_KEY_PASSWORD = "dashboard_ti_pwd";
 const STORAGE_KEY_AUTH = "dashboard_ti_auth_session";
+const STORAGE_KEY_GH_TOKEN = "dashboard_ti_gh_token";
+const STORAGE_KEY_GH_REPO = "dashboard_ti_gh_repo";
+const STORAGE_KEY_GH_BRANCH = "dashboard_ti_gh_branch";
 
 // Dados Oficiais Consolidados (Baseados nos dados oficiais de Outubro com histórico e estrutura genérica reutilizável)
 const DEFAULT_DATA = {
@@ -235,6 +238,26 @@ function renderTextLines(items) {
       return `<li>${escapeHtml(item)}</li>`;
     })
     .join("");
+}
+
+// Carregar dados remotos do data.json primeiro, ou fallback para LocalStorage
+async function initAppData() {
+  try {
+    const res = await fetch(`data.json?t=${Date.now()}`);
+    if (res.ok) {
+      const remoteData = await res.json();
+      if (remoteData && remoteData.general && remoteData.tickets) {
+        appData = remoteData;
+        localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(remoteData));
+        renderAllSections();
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn("Não foi possível carregar data.json remoto, usando cache local:", err);
+  }
+  appData = loadData();
+  renderAllSections();
 }
 
 function loadData() {
@@ -812,8 +835,11 @@ function populateEditorMaster() {
   document.getElementById("input-plan-desc").value = appData.planning.desc;
   renderPlanningCategoriesEditor(appData.planning.categories);
 
-  // Aba Segurança
+  // Aba Segurança e GitHub Sync
   document.getElementById("input-new-password").value = "";
+  document.getElementById("input-gh-token").value = localStorage.getItem(STORAGE_KEY_GH_TOKEN) || "";
+  document.getElementById("input-gh-repo").value = localStorage.getItem(STORAGE_KEY_GH_REPO) || "DEVFEX00/indicadores-ti";
+  document.getElementById("input-gh-branch").value = localStorage.getItem(STORAGE_KEY_GH_BRANCH) || "main";
 }
 
 // 1. Editor Dinâmico de Campanhas de Marketing
@@ -1230,14 +1256,90 @@ masterEditorForm.addEventListener("submit", (e) => {
   const newPassword = document.getElementById("input-new-password").value;
   if (newPassword && newPassword.trim()) {
     setStoredPassword(newPassword);
-    showToast("Todas as seções e a nova senha foram atualizadas com sucesso!");
-  } else {
-    showToast("Dashboard atualizado com sucesso!");
+  }
+
+  // Configurações do GitHub Sync
+  const ghToken = document.getElementById("input-gh-token").value.trim();
+  const ghRepo = document.getElementById("input-gh-repo").value.trim() || "DEVFEX00/indicadores-ti";
+  const ghBranch = document.getElementById("input-gh-branch").value.trim() || "main";
+
+  if (ghToken) {
+    localStorage.setItem(STORAGE_KEY_GH_TOKEN, ghToken);
+    localStorage.setItem(STORAGE_KEY_GH_REPO, ghRepo);
+    localStorage.setItem(STORAGE_KEY_GH_BRANCH, ghBranch);
   }
 
   saveData(updatedData);
+
+  // Se o token estiver configurado, envia commit para o GitHub
+  if (ghToken) {
+    showToast("Salvando localmente e publicando no GitHub...");
+    syncToGitHub(updatedData, ghRepo, ghBranch, ghToken)
+      .then(() => {
+        showToast("🚀 Publicado no GitHub com sucesso! A Vercel atualizará em ~15s.");
+      })
+      .catch((err) => {
+        alert("Aviso: Dados salvos localmente, mas erro ao publicar no GitHub: " + err.message);
+      });
+  } else {
+    showToast("Salvo localmente! (Configure o Token na aba Segurança para publicar para todos)");
+  }
+
   closeModal();
 });
+
+// Sincronização direta com a API do GitHub via commit do data.json
+async function syncToGitHub(dataObject, repo, branch, token) {
+  const filePath = "data.json";
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+  // 1. Obter o SHA atual do arquivo data.json no repositório
+  let currentSha = null;
+  try {
+    const getRes = await fetch(`${apiUrl}?ref=${branch}`, {
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: "application/vnd.github.v3+json",
+      },
+    });
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      currentSha = fileData.sha;
+    }
+  } catch (e) {
+    console.warn("Não foi possível obter SHA prévio do GitHub:", e);
+  }
+
+  // 2. Codificar o JSON em Base64 (com suporte UTF-8)
+  const jsonContent = JSON.stringify(dataObject, null, 2);
+  const base64Content = btoa(unescape(encodeURIComponent(jsonContent)));
+
+  // 3. Fazer o PUT para criar ou atualizar o arquivo diretamente via commit
+  const commitPayload = {
+    message: `feat(dashboard): atualização de indicadores via modo editor [${new Date().toLocaleString("pt-BR")}]`,
+    content: base64Content,
+    branch: branch,
+  };
+  if (currentSha) {
+    commitPayload.sha = currentSha;
+  }
+
+  const putRes = await fetch(apiUrl, {
+    method: "PUT",
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(commitPayload),
+  });
+
+  if (!putRes.ok) {
+    const errorBody = await putRes.json();
+    throw new Error(errorBody.message || `HTTP ${putRes.status}`);
+  }
+  return true;
+}
 
 // Restaurar Padrões
 btnResetDefault.addEventListener("click", () => {
@@ -1305,4 +1407,4 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Inicialização Geral
-renderAllSections();
+initAppData();

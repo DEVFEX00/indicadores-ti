@@ -526,8 +526,32 @@
               </fieldset>
             </div>
 
-            <!-- ABA 8: SEGURANÇA -->
+            <!-- ABA 8: SEGURANÇA E GITHUB SYNC -->
             <div id="tab-seguranca" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Sincronização com o GitHub (Publicação Automática na Vercel)</legend>
+                <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:14px; line-height:1.5;">
+                  Configure seu <strong>GitHub Personal Access Token (PAT)</strong> para que, ao salvar, as alterações sejam commitadas diretamente no repositório. A Vercel fará o deploy automático e a página atualizará para todos os usuários em qualquer navegador.
+                </p>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label for="input-gh-repo">Repositório (usuário/repo)</label>
+                    <input type="text" id="input-gh-repo" class="form-input" value="DEVFEX00/indicadores-ti" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-gh-branch">Branch Principal</label>
+                    <input type="text" id="input-gh-branch" class="form-input" value="main" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-gh-token">GitHub Personal Access Token (PAT)</label>
+                  <input type="password" id="input-gh-token" class="form-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+                  <small style="color:var(--text-muted); font-size:0.78rem; display:block; margin-top:4px;">
+                    Gere em: GitHub > Settings > Developer settings > Personal access tokens (Tokens classic) > Marque o escopo <code>repo</code>. O token fica salvo com segurança apenas no seu navegador.
+                  </small>
+                </div>
+              </fieldset>
+
               <fieldset class="form-section">
                 <legend>Alterar Senha do Administrador</legend>
                 <div class="form-group">
@@ -541,7 +565,10 @@
               <button type="button" id="btn-reset-default" class="btn btn-danger-soft">Restaurar Padrão Oficial</button>
               <div class="modal-footer-actions">
                 <button type="button" id="btn-cancel-edit" class="btn btn-secondary">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Salvar Todas as Seções</button>
+                <button type="submit" class="btn btn-primary" id="btn-save-master">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  Salvar e Publicar
+                </button>
               </div>
             </div>
           </form>

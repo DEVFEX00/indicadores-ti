@@ -1,0 +1,194 @@
+{
+  "general": {
+    "badge": "Painel Executivo Geral",
+    "title": "Indicadores Departamento TI",
+    "subtitle": "Acompanhamento consolidado de entregas, engajamento de marketing, resolução de tickets, evolução de comunidades, projetos de sistemas/IA e roadmap estratégico."
+  },
+  "certificates": {
+    "tag": "Portal de Operações",
+    "title": "Certificados",
+    "period": "01/10/2026 a 30/10/2026",
+    "desc": "Métricas operacionais de emissão de certificados, clientes atendidos e controle de pendências.",
+    "delivered": 158,
+    "issued": 749,
+    "waiting": 3,
+    "improved": [
+      "Pedidos em aguardo reduziram de 7 para 3 (-57,1%), com menos pendências de informações ou validação do cliente.",
+      "Capacidade contínua de atendimento em lotes mesmo com variações sazonais de volume."
+    ],
+    "attention": [
+      "Queda no volume total: emissão caiu de 1.267 para 749 (-40,9%) e clientes atendidos de 185 para 158 (-14,6%).",
+      "A média de certificados por cliente caiu de 6,8 para 4,7, indicando menor volume de formandos por contrato."
+    ]
+  },
+  "marketing": {
+    "tag": "Aquisição & Tráfego",
+    "title": "Marketing",
+    "period": "Campanhas Mensais",
+    "desc": "Desempenho de campanhas de e-mail marketing, WhatsApp, canais orgânicos e tráfego pago.",
+    "leadsEmail": 97,
+    "leadsWpp": 14,
+    "leadsPaid": 143,
+    "campaigns": [
+      {
+        "name": "NEWSLETTER - 4msgs",
+        "emailLeads": "30 leads",
+        "wppLeads": "-",
+        "costObs": "Orgânico"
+      },
+      {
+        "name": "PODZORA - 5msgs",
+        "emailLeads": "30 leads",
+        "wppLeads": "-",
+        "costObs": "Orgânico (+11,1%)"
+      },
+      {
+        "name": "REVIEW 1° ENCONTRO LÍDERES - 8msgs",
+        "emailLeads": "37 leads",
+        "wppLeads": "14 leads",
+        "costObs": "Orgânico"
+      },
+      {
+        "name": "CAMPANHAS REDES SOCIAIS (Infoprodutores)",
+        "emailLeads": "-",
+        "wppLeads": "-",
+        "costObs": "143 leads (Tráfego Pago)"
+      }
+    ],
+    "improved": [
+      "Tráfego pago (Agência terceirizada): melhorou de 119 para 143 leads (+20,2%), com 24 leads adicionais.",
+      "O Podzora manteve tração estável e positiva, subindo de 27 para 30 leads (+11,1%).",
+      "Review do 1º Encontro de Líderes gerou 14 levantadas de mão diretas no WhatsApp."
+    ],
+    "attention": [
+      "Ações internas e e-mail (Orgânico): queda expressiva de 615 para 97 leads (-84,2%) devido à ausência de megaevento presencial no período.",
+      "Newsletter caiu de 51 para 30 leads (-41,2%), acompanhando a redução do volume de disparos de 8 para 4 mensagens."
+    ]
+  },
+  "tickets": {
+    "tag": "Suporte & Chamados",
+    "title": "Tickets",
+    "period": "Acompanhamento Mensal",
+    "desc": "Acompanhamento executivo de chamados abertos, resolvidos e produtividade individual da equipe de TI.",
+    "badge": "Indicadores Mensais do TI",
+    "heroTitle": "Visão mensal do desempenho do departamento de TI.",
+    "heroDescription": "Dashboard executivo com leitura rápida de abertos, resolvidos, percentual individual e desempenho total do setor em relação à meta mensal acima de 80%.",
+    "goal": 80,
+    "team": [
+      { "role": "CTO", "name": "Pedro", "opened": 14, "resolved": 5 },
+      { "role": "Supervisor", "name": "Frank", "opened": 2, "resolved": 1 },
+      { "role": "Analista", "name": "Clever", "opened": 7, "resolved": 51 },
+      { "role": "Analista", "name": "Kauan", "opened": 1, "resolved": 7 }
+    ],
+    "cycles": [
+      { "name": "Clever", "c1": "16", "c2": "16", "c3": "7", "c4": "12" },
+      { "name": "Kauan", "c1": "1", "c2": "1", "c3": "-", "c4": "1" },
+      { "name": "Frank", "c1": "-", "c2": "-", "c3": "-", "c4": "-" },
+      { "name": "Pedro", "c1": "-", "c2": "1", "c3": "-", "c4": "-" }
+    ],
+    "improved": [
+      "A taxa de conclusão subiu de 64,37% para 72,73% (+8,36 pontos percentuais).",
+      "Os tickets resolvidos aumentaram de 56 para 64 (+14,3%), enquanto os abertos caíram de 31 para 24 (-22,6%).",
+      "Alta produtividade operacional dos analistas Clever (87,93%) e Kauan (87,50%), superando a meta individual de 80%."
+    ],
+    "attention": [
+      "A meta global acima de 80% ainda não foi atingida (ficou em 72,73%). Faltaram 7 conclusões para bater a meta de 80,68%.",
+      "Pedro concentra 14 dos 24 tickets em aberto; demanda alinhamento de prioridades de gestão técnica e mitigação de gargalos."
+    ]
+  },
+  "communities": {
+    "tag": "Engajamento & Canais",
+    "title": "Comunidades",
+    "period": "Crescimento Acumulado",
+    "desc": "Monitoramento de captação de leads em páginas de conversão e membros ativos nos grupos de WhatsApp.",
+    "rdLeads": 112,
+    "wppLeads": 110,
+    "improved": [
+      "Crescimento constante: inscritos na página passaram de 105 para 112 (+6,7%; +7 leads).",
+      "Grupo do WhatsApp avançou para 110 membros ativos (+2,8%; +3 membros).",
+      "Retenção sólida e engajamento qualificado da Comunidade Líderes FEX."
+    ],
+    "attention": [
+      "Desaceleração no ritmo de novas entradas quando comparado aos meses de pico (julho/agosto).",
+      "Gap entre novos leads na página e entrada no grupo do WhatsApp: necessário otimizar página de agradecimento e link direto para o grupo."
+    ]
+  },
+  "systems": {
+    "tag": "Engenharia & Soluções",
+    "title": "Sistemas e IA",
+    "period": "Entregas & Projetos",
+    "desc": "Status de implantação, migrações, integrações e novos produtos em desenvolvimento.",
+    "projects": [
+      {
+        "name": "FEX Corp",
+        "status": "done",
+        "statusText": "Alinhado / Em Finalização",
+        "planned": "Definição de escopo para gestão de clientes, contratos e entregáveis, além de integração com Notion.",
+        "done": "Alinhamento realizado com foco em gestão de clientes, contratos e dashboards. Melhorias apontadas pelo time + revisão em finalização. Versão 1.0 do encoder de Plano de Ensino estruturado pronta."
+      },
+      {
+        "name": "JACAD (Novo Sistema Acadêmico)",
+        "status": "progress",
+        "statusText": "Em Validação / Treinamento",
+        "planned": "Montar plano de virada de chave de sistemas (TGC e pós-graduações).",
+        "done": "Pacote de horas extras de treinamento concluído em 08 e 09/10. Simulação de migração de dados do Unimestre avançou bem. Análise de orçamento para fluxo sem financeiro em andamento."
+      },
+      {
+        "name": "UNICO SKILL & FEX Hub Matrículas",
+        "status": "done",
+        "statusText": "Validado / Aguardando Cursos",
+        "planned": "Construir integração direta com JACAD.",
+        "done": "Sistema FEX Hub Matrículas (web app) criado e validado para gerenciar pedidos recebidos e aprovação. Pendência atual: lista final de cursos para parametrização."
+      },
+      {
+        "name": "Sólides (Ambiente LXP)",
+        "status": "progress",
+        "statusText": "Ambiente Criado",
+        "planned": "Construir ambiente LXP dedicado para a Sólides.",
+        "done": "Ambiente criado com sucesso. Pendências: definição sobre integração via JACAD/Unimestre e envio de pacote de assets visuais do cliente para tematização."
+      },
+      {
+        "name": "App FEX Comercial + Gerador de Propostas",
+        "status": "pause",
+        "statusText": "Pausado Temporariamente",
+        "planned": "Retomar planejamento e prototipação com apoio da IA Zora.",
+        "done": "Projeto pausado estrategicamente para focar nos prazos de migração do JACAD e Hub de Matrículas."
+      }
+    ]
+  },
+  "planning": {
+    "tag": "Roadmap Estratégico",
+    "title": "Planejamento",
+    "period": "Metas Próximo Ciclo",
+    "desc": "Próximos passos prioritários, campanhas estratégicas e entregas do próximo ciclo.",
+    "categories": [
+      {
+        "title": "Campanhas & Aquisição",
+        "items": [
+          "B2C Extensão Universitária - Proposta Plano Bronze (Esquenta Black Friday).",
+          "B2C Pós-Graduação - Proposta Plano Prata.",
+          "B2B - Convite para palestras corporativas e Workshops de T&D.",
+          "Novo convite para participação da nova temporada do Podzora.",
+          "Funis de Tráfego Pago: Formações FEX, Extensão Universitária A/B e Gênio Oculto."
+        ]
+      },
+      {
+        "title": "Sistemas & Infraestrutura",
+        "items": [
+          "Finalização da migração JACAD + Plataforma LXP + Biblioteca Virtual.",
+          "Definição oficial da data de virada de chave de sistemas (TGC e Pós).",
+          "Disponibilização da versão de produção do FEX Corp para os gestores.",
+          "Parametrização do catálogo de cursos na esteira do FEX Hub Matrículas."
+        ]
+      },
+      {
+        "title": "Operações & Atendimento",
+        "items": [
+          "Redução das pendências de validação e emissão ágil no Portal de Certificados.",
+          "Atingimento da meta de 80% nos tickets através da redistribuição de chamados.",
+          "Implementação de teste A/B no fluxo de entrada da Comunidade Líderes FEX."
+        ]
+      }
+    ]
+  }
+}
