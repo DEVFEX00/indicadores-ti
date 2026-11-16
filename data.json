@@ -207,13 +207,18 @@
     "desc": "Próximos passos prioritários, campanhas estratégicas e entregas do próximo ciclo.",
     "categories": [
       {
-        "title": "Campanhas & Aquisição",
+        "title": "JACAD",
         "items": [
-          "B2C Extensão Universitária - Proposta Plano Bronze (Esquenta Black Friday).",
-          "B2C Pós-Graduação - Proposta Plano Prata.",
-          "B2B - Convite para palestras corporativas e Workshops de T&D.",
-          "Novo convite para participação da nova temporada do Podzora.",
-          "Funis de Tráfego Pago: Formações FEX, Extensão Universitária A/B e Gênio Oculto."
+          "JACAD",
+          "Início de operação (Sólides) ✅",
+          "Treinamento/documentação gestor de polo ✅",
+          "Documentação Webhooks para parceiros ✅",
+          "Produção e documentação de régua de relacionamento ✅",
+          "Refinamento do portal do aluno ⚠️",
+          "Configuração do conteúdo AVA LXP (Sólides e TGC)⚠️",
+          "Início de operação Vestibular TGC 2027 ⚠️",
+          "Continuação Planejamento Migração Total JACAD ⚠️",
+          ""
         ]
       },
       {
