@@ -75,16 +75,60 @@
     "heroDescription": "Dashboard executivo com leitura rápida de abertos, resolvidos, percentual individual e desempenho total do setor em relação à meta mensal acima de 80%.",
     "goal": 80,
     "team": [
-      { "role": "CTO", "name": "Pedro", "opened": 14, "resolved": 5 },
-      { "role": "Supervisor", "name": "Frank", "opened": 2, "resolved": 1 },
-      { "role": "Analista", "name": "Clever", "opened": 7, "resolved": 51 },
-      { "role": "Analista", "name": "Kauan", "opened": 1, "resolved": 7 }
+      {
+        "role": "CTO",
+        "name": "Pedro",
+        "opened": 14,
+        "resolved": 5
+      },
+      {
+        "role": "Supervisor",
+        "name": "Frank",
+        "opened": 2,
+        "resolved": 1
+      },
+      {
+        "role": "Analista",
+        "name": "Clever",
+        "opened": 7,
+        "resolved": 51
+      },
+      {
+        "role": "Analista",
+        "name": "Kauan",
+        "opened": 1,
+        "resolved": 7
+      }
     ],
     "cycles": [
-      { "name": "Clever", "c1": "16", "c2": "16", "c3": "7", "c4": "12" },
-      { "name": "Kauan", "c1": "1", "c2": "1", "c3": "-", "c4": "1" },
-      { "name": "Frank", "c1": "-", "c2": "-", "c3": "-", "c4": "-" },
-      { "name": "Pedro", "c1": "-", "c2": "1", "c3": "-", "c4": "-" }
+      {
+        "name": "Clever",
+        "c1": "16",
+        "c2": "16",
+        "c3": "7",
+        "c4": "12"
+      },
+      {
+        "name": "Kauan",
+        "c1": "1",
+        "c2": "1",
+        "c3": "-",
+        "c4": "1"
+      },
+      {
+        "name": "Frank",
+        "c1": "-",
+        "c2": "-",
+        "c3": "-",
+        "c4": "-"
+      },
+      {
+        "name": "Pedro",
+        "c1": "-",
+        "c2": "1",
+        "c3": "-",
+        "c4": "-"
+      }
     ],
     "improved": [
       "A taxa de conclusão subiu de 64,37% para 72,73% (+8,36 pontos percentuais).",
