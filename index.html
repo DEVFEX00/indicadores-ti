@@ -3,18 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard TI - Indicadores de Desempenho</title>
+    <title>Indicadores Departamento TI - Dashboard Executivo</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Top Action Bar (Edit trigger / Status) -->
+    <!-- Top Action Bar com Navegação e Controles de Edição -->
     <header class="top-nav">
       <div class="nav-container">
         <div class="brand">
           <span class="status-indicator"></span>
-          <span class="brand-name">Painel Executivo TI</span>
+          <span class="brand-name">TI Performance</span>
           <span id="mode-badge" class="badge">Visualização</span>
         </div>
+
+        <!-- Links Rápidos de Navegação das Seções (Estilo Landing Page) -->
+        <nav class="nav-links">
+          <a href="#section-certificados" class="nav-link">Certificados</a>
+          <a href="#section-marketing" class="nav-link">Marketing</a>
+          <a href="#section-tickets" class="nav-link">Tickets</a>
+          <a href="#section-comunidades" class="nav-link">Comunidades</a>
+          <a href="#section-sistemas" class="nav-link">Sistemas & IA</a>
+          <a href="#section-planejamento" class="nav-link">Planejamento</a>
+        </nav>
+
         <div class="nav-actions">
           <button id="btn-export" class="btn btn-secondary" title="Exportar dados como JSON">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -27,51 +38,205 @@
           <input type="file" id="file-import" accept=".json" style="display:none" />
           <button id="btn-edit-toggle" class="btn btn-primary">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span id="btn-edit-text">Modo Editor</span>
+            <span id="btn-edit-text">Acesso Editor</span>
           </button>
         </div>
       </div>
     </header>
 
-    <div class="app">
-      <header class="hero">
-        <div class="hero-copy">
-          <span class="eyebrow" id="hero-badge">Indicadores Mensais do TI</span>
-          <h1 id="hero-title">Visão mensal do desempenho do departamento de TI.</h1>
-          <p id="hero-description">
-            Dashboard executivo com leitura rápida de abertos, resolvidos,
-            percentual individual e desempenho total do setor em relação à meta
-            mensal acima de 80%.
-          </p>
-        </div>
-        <div class="people-list" id="people-list"></div>
-      </header>
+    <div class="page-container">
+      <!-- Banner Hero Principal da Landing Page -->
+      <section class="hero-landing">
+        <div class="hero-landing-badge" id="main-badge">Painel Executivo Geral</div>
+        <h1 id="main-title">Indicadores Departamento TI</h1>
+        <p id="main-subtitle">
+          Acompanhamento consolidado de entregas, engajamento de marketing, resolução de tickets, evolução de comunidades, projetos de sistemas/IA e roadmap estratégico.
+        </p>
+      </section>
 
-      <main class="content">
-        <section id="summary"></section>
-        <section class="team-grid" id="team-grid"></section>
-      </main>
+      <!-- 1. SEÇÃO: CERTIFICADOS (Tonalidades de Cinza / Platina) -->
+      <section id="section-certificados" class="dashboard-section section-cert">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="cert-tag">Portal de Operações</span>
+            <h2 class="section-title" id="cert-title">Certificados</h2>
+            <p class="section-subtitle" id="cert-desc">Métricas operacionais de emissão de certificados, clientes atendidos e controle de pendências.</p>
+          </div>
+          <div class="section-period-pill" id="cert-period">Período de Análise</div>
+        </div>
+
+        <div class="kpi-grid" id="cert-kpi-grid">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <div class="performance-box" id="cert-perf-box">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- 2. SEÇÃO: MARKETING (Tonalidades de Azul / Ciano Profundo) -->
+      <section id="section-marketing" class="dashboard-section section-mkt">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="mkt-tag">Aquisição & Tráfego</span>
+            <h2 class="section-title" id="mkt-title">Marketing</h2>
+            <p class="section-subtitle" id="mkt-desc">Desempenho de campanhas de e-mail marketing, WhatsApp, canais orgânicos e tráfego pago.</p>
+          </div>
+          <div class="section-period-pill" id="mkt-period">Campanhas Mensais</div>
+        </div>
+
+        <div class="kpi-grid" id="mkt-kpi-grid">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <div class="custom-table-container">
+          <table class="custom-table" id="mkt-table">
+            <thead>
+              <tr>
+                <th>Campanha / Origem</th>
+                <th>Levantadas de Mão (E-mails)</th>
+                <th>Levantadas de Mão (WhatsApp)</th>
+                <th>Custo / Obs</th>
+              </tr>
+            </thead>
+            <tbody id="mkt-table-body">
+              <!-- Renderizado via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="performance-box" id="mkt-perf-box">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- 3. SEÇÃO: TICKETS (Verde Neon Oficial - 100% Preservado) -->
+      <section id="section-tickets" class="dashboard-section section-tickets">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="tickets-tag">Suporte & Chamados</span>
+            <h2 class="section-title" id="tickets-title">Tickets</h2>
+            <p class="section-subtitle" id="tickets-desc">Acompanhamento executivo de chamados abertos, resolvidos e produtividade individual da equipe de TI.</p>
+          </div>
+          <div class="section-period-pill" id="tickets-period">Acompanhamento Mensal</div>
+        </div>
+
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow" id="hero-badge">Indicadores Mensais do TI</span>
+            <h1 id="hero-title" style="font-size:clamp(1.8rem, 3.2vw, 2.8rem);">Visão mensal do desempenho do departamento de TI.</h1>
+            <p id="hero-description">
+              Dashboard executivo com leitura rápida de abertos, resolvidos,
+              percentual individual e desempenho total do setor em relação à meta mensal acima de 80%.
+            </p>
+          </div>
+          <div class="people-list" id="people-list"></div>
+        </div>
+
+        <div class="content">
+          <div id="summary"></div>
+          <div class="team-grid" id="team-grid"></div>
+        </div>
+
+        <!-- Tabela de Ciclos e Resumo Setembro-Outubro de Tickets -->
+        <div class="custom-table-container" style="margin-top:24px;">
+          <table class="custom-table" id="tickets-cycles-table">
+            <thead>
+              <tr id="cycles-table-head">
+                <th>Colaborador</th>
+                <th>Ciclo 1</th>
+                <th>Ciclo 2</th>
+                <th>Ciclo 3</th>
+                <th>Ciclo 4</th>
+              </tr>
+            </thead>
+            <tbody id="cycles-table-body">
+              <!-- Renderizado via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="performance-box" id="tickets-perf-box">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- 4. SEÇÃO: COMUNIDADES (Tonalidades de Roxo / Violeta) -->
+      <section id="section-comunidades" class="dashboard-section section-com">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="com-tag">Engajamento & Canais</span>
+            <h2 class="section-title" id="com-title">Comunidades</h2>
+            <p class="section-subtitle" id="com-desc">Monitoramento de captação de leads em páginas de conversão e membros ativos nos grupos de WhatsApp.</p>
+          </div>
+          <div class="section-period-pill" id="com-period">Crescimento Acumulado</div>
+        </div>
+
+        <div class="kpi-grid" id="com-kpi-grid">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <div class="performance-box" id="com-perf-box">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- 5. SEÇÃO: SISTEMAS E IA (Tonalidades de Âmbar / Laranja Tecnológico) -->
+      <section id="section-sistemas" class="dashboard-section section-sys">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="sys-tag">Engenharia & Soluções</span>
+            <h2 class="section-title" id="sys-title">Sistemas e IA</h2>
+            <p class="section-subtitle" id="sys-desc">Status de implantação, migrações, integrações e novos produtos em desenvolvimento.</p>
+          </div>
+          <div class="section-period-pill" id="sys-period">Entregas & Projetos</div>
+        </div>
+
+        <div class="project-cards-grid" id="sys-projects-grid">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- 6. SEÇÃO: PLANEJAMENTO (Tonalidades de Esmeralda / Teal) -->
+      <section id="section-planejamento" class="dashboard-section section-plan">
+        <div class="section-header">
+          <div class="section-header-content">
+            <span class="section-tag" id="plan-tag">Roadmap Estratégico</span>
+            <h2 class="section-title" id="plan-title">Planejamento</h2>
+            <p class="section-subtitle" id="plan-desc">Próximos passos prioritários, campanhas estratégicas e entregas do próximo ciclo.</p>
+          </div>
+          <div class="section-period-pill" id="plan-period">Metas Próximo Mês</div>
+        </div>
+
+        <div class="plan-roadmap-grid" id="plan-roadmap-grid">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <footer class="landing-footer">
+        <p>Indicadores Departamento TI &copy; 2026 &bull; Painel Executivo de Gestão Tecnológica</p>
+      </footer>
     </div>
 
-    <!-- Modal de Edição com Senha e Gerenciamento Completo -->
+    <!-- MODAL DE EDIÇÃO GLOBAL COMPLETO (Protegido por Senha) -->
     <div id="edit-modal" class="modal-backdrop" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
           <div>
-            <h2>Gerenciamento do Dashboard</h2>
-            <p class="modal-subtitle">Altere metas, informações gerais e indicadores dos colaboradores</p>
+            <h2>Central de Edição do Dashboard</h2>
+            <p class="modal-subtitle">Altere qualquer informação de qualquer seção de forma 100% editável</p>
           </div>
           <button id="btn-modal-close" class="btn-icon" aria-label="Fechar">&times;</button>
         </div>
 
-        <!-- Passo 1: Autenticação / Desbloqueio -->
+        <!-- Autenticação com Senha -->
         <div id="auth-section" class="modal-body">
           <div class="auth-box">
-            <div class="auth-icon">
+            <div class="auth-icon" style="margin: 0 auto 16px;">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
             <h3>Acesso Administrativo</h3>
-            <p>Digite a senha mestre para editar as métricas. A senha padrão inicial é <code>admin123</code>.</p>
+            <p>Digite a senha mestre para editar as seções. Senha padrão: <code>admin123</code>.</p>
             <form id="auth-form" class="auth-form">
               <div class="form-group">
                 <input type="password" id="admin-password" class="form-input" placeholder="Digite a senha de administrador" required autocomplete="current-password" />
@@ -82,57 +247,301 @@
           </div>
         </div>
 
-        <!-- Passo 2: Painel de Edição -->
+        <!-- Painel com Abas de Edição -->
         <div id="editor-section" class="modal-body" style="display: none;">
-          <form id="dashboard-form">
-            <!-- Configurações Gerais -->
-            <fieldset class="form-section">
-              <legend>Configurações Gerais</legend>
-              <div class="form-grid-2">
+          <!-- Navegador de Abas do Editor -->
+          <div class="editor-tabs">
+            <button type="button" class="tab-btn active" data-tab="tab-geral">Visão Geral</button>
+            <button type="button" class="tab-btn" data-tab="tab-certificados">Certificados</button>
+            <button type="button" class="tab-btn" data-tab="tab-marketing">Marketing</button>
+            <button type="button" class="tab-btn" data-tab="tab-tickets">Tickets</button>
+            <button type="button" class="tab-btn" data-tab="tab-comunidades">Comunidades</button>
+            <button type="button" class="tab-btn" data-tab="tab-sistemas">Sistemas & IA</button>
+            <button type="button" class="tab-btn" data-tab="tab-planejamento">Planejamento</button>
+            <button type="button" class="tab-btn" data-tab="tab-seguranca">Segurança</button>
+          </div>
+
+          <form id="master-editor-form">
+            <!-- ABA 1: VISÃO GERAL -->
+            <div id="tab-geral" class="tab-content active">
+              <fieldset class="form-section">
+                <legend>Cabeçalho da Landing Page</legend>
                 <div class="form-group">
-                  <label for="input-badge">Selo / Categoria</label>
-                  <input type="text" id="input-badge" class="form-input" required />
+                  <label for="input-main-badge">Selo Superior</label>
+                  <input type="text" id="input-main-badge" class="form-input" required />
                 </div>
                 <div class="form-group">
-                  <label for="input-goal">Meta do Departamento (%)</label>
-                  <input type="number" id="input-goal" class="form-input" min="1" max="100" step="0.5" required />
+                  <label for="input-main-title">Título Principal</label>
+                  <input type="text" id="input-main-title" class="form-input" required />
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="input-title">Título Principal</label>
-                <input type="text" id="input-title" class="form-input" required />
-              </div>
-              <div class="form-group">
-                <label for="input-description">Descrição Explicativa</label>
-                <textarea id="input-description" class="form-textarea" rows="2" required></textarea>
-              </div>
-            </fieldset>
+                <div class="form-group">
+                  <label for="input-main-subtitle">Subtítulo Explicativo</label>
+                  <textarea id="input-main-subtitle" class="form-textarea" rows="2" required></textarea>
+                </div>
+              </fieldset>
+            </div>
 
-            <!-- Equipe / Colaboradores -->
-            <fieldset class="form-section">
-              <div class="section-header-flex">
-                <legend>Membros da Equipe e Métricas</legend>
-                <button type="button" id="btn-add-member" class="btn btn-secondary btn-sm">
-                  + Adicionar Membro
-                </button>
-              </div>
-              <div id="members-editor-list" class="members-editor-container"></div>
-            </fieldset>
+            <!-- ABA 2: CERTIFICADOS -->
+            <div id="tab-certificados" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos da Seção Certificados</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-cert-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pill / Período</label>
+                    <input type="text" id="input-cert-period" class="form-input" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <input type="text" id="input-cert-desc" class="form-input" required />
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Métricas / Indicadores de Certificados</legend>
+                <div class="form-grid-3">
+                  <div class="form-group">
+                    <label>Pedidos Entregues (Clientes)</label>
+                    <input type="number" id="input-cert-delivered" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Certificados Emitidos</label>
+                    <input type="number" id="input-cert-issued" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pedidos em Aguardo</label>
+                    <input type="number" id="input-cert-waiting" class="form-input" required />
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Resumo da Performance de Certificados</legend>
+                <div class="form-group">
+                  <label>Pontos Positivos / O que Melhorou (1 item por linha)</label>
+                  <textarea id="input-cert-improved" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Pontos de Atenção (1 item por linha)</label>
+                  <textarea id="input-cert-attention" class="form-textarea" rows="3"></textarea>
+                </div>
+              </fieldset>
+            </div>
 
-            <!-- Alterar Senha (Opcional) -->
-            <fieldset class="form-section">
-              <legend>Segurança</legend>
-              <div class="form-group">
-                <label for="input-new-password">Alterar Senha do Modo Editor (opcional)</label>
-                <input type="password" id="input-new-password" class="form-input" placeholder="Deixe em branco para manter a atual" autocomplete="new-password" />
-              </div>
-            </fieldset>
+            <!-- ABA 3: MARKETING -->
+            <div id="tab-marketing" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos da Seção Marketing</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-mkt-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pill / Período</label>
+                    <input type="text" id="input-mkt-period" class="form-input" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <input type="text" id="input-mkt-desc" class="form-input" required />
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Métricas de Aquisição</legend>
+                <div class="form-grid-3">
+                  <div class="form-group">
+                    <label>Leads Orgânicos (E-mail)</label>
+                    <input type="number" id="input-mkt-leads-email" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Leads WhatsApp</label>
+                    <input type="number" id="input-mkt-leads-wpp" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Tráfego Pago (Redes Sociais)</label>
+                    <input type="number" id="input-mkt-leads-paid" class="form-input" required />
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <div class="section-header-flex">
+                  <legend>Campanhas Realizadas (Tabela)</legend>
+                  <button type="button" id="btn-add-mkt-camp" class="btn btn-secondary btn-sm">+ Adicionar Campanha</button>
+                </div>
+                <div id="mkt-campaigns-editor-list"></div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Resumo da Performance de Marketing</legend>
+                <div class="form-group">
+                  <label>Análise e Destaques (1 item por linha)</label>
+                  <textarea id="input-mkt-improved" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Pontos de Atenção (1 item por linha)</label>
+                  <textarea id="input-mkt-attention" class="form-textarea" rows="3"></textarea>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- ABA 4: TICKETS -->
+            <div id="tab-tickets" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos e Metas de Tickets</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-tickets-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Meta do Departamento (%)</label>
+                    <input type="number" id="input-tickets-goal" class="form-input" min="1" max="100" step="0.5" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição do Hero</label>
+                  <textarea id="input-tickets-desc" class="form-textarea" rows="2" required></textarea>
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <div class="section-header-flex">
+                  <legend>Membros da Equipe de TI</legend>
+                  <button type="button" id="btn-add-ticket-member" class="btn btn-secondary btn-sm">+ Adicionar Membro</button>
+                </div>
+                <div id="tickets-members-editor-list"></div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Resumo da Performance de Tickets</legend>
+                <div class="form-group">
+                  <label>O que Melhorou (1 item por linha)</label>
+                  <textarea id="input-tickets-improved" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Pontos de Atenção (1 item por linha)</label>
+                  <textarea id="input-tickets-attention" class="form-textarea" rows="3"></textarea>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- ABA 5: COMUNIDADES -->
+            <div id="tab-comunidades" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos da Seção Comunidades</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-com-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pill / Período</label>
+                    <input type="text" id="input-com-period" class="form-input" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <input type="text" id="input-com-desc" class="form-input" required />
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Métricas de Comunidades</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Inscritos Página e Conversão RD</label>
+                    <input type="number" id="input-com-rd" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Inscritos no Grupo WhatsApp</label>
+                    <input type="number" id="input-com-wpp" class="form-input" required />
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <legend>Resumo da Performance de Comunidades</legend>
+                <div class="form-group">
+                  <label>Destaques / O que Melhorou (1 item por linha)</label>
+                  <textarea id="input-com-improved" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Pontos de Atenção (1 item por linha)</label>
+                  <textarea id="input-com-attention" class="form-textarea" rows="3"></textarea>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- ABA 6: SISTEMAS E IA -->
+            <div id="tab-sistemas" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos da Seção Sistemas e IA</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-sys-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pill / Período</label>
+                    <input type="text" id="input-sys-period" class="form-input" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <input type="text" id="input-sys-desc" class="form-input" required />
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <div class="section-header-flex">
+                  <legend>Projetos e Módulos</legend>
+                  <button type="button" id="btn-add-sys-project" class="btn btn-secondary btn-sm">+ Adicionar Projeto</button>
+                </div>
+                <div id="sys-projects-editor-list"></div>
+              </fieldset>
+            </div>
+
+            <!-- ABA 7: PLANEJAMENTO -->
+            <div id="tab-planejamento" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Textos da Seção Planejamento</legend>
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="input-plan-title" class="form-input" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Pill / Período</label>
+                    <input type="text" id="input-plan-period" class="form-input" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <input type="text" id="input-plan-desc" class="form-input" required />
+                </div>
+              </fieldset>
+              <fieldset class="form-section">
+                <div class="section-header-flex">
+                  <legend>Categorias de Planejamento</legend>
+                  <button type="button" id="btn-add-plan-category" class="btn btn-secondary btn-sm">+ Adicionar Categoria</button>
+                </div>
+                <div id="plan-categories-editor-list"></div>
+              </fieldset>
+            </div>
+
+            <!-- ABA 8: SEGURANÇA -->
+            <div id="tab-seguranca" class="tab-content">
+              <fieldset class="form-section">
+                <legend>Alterar Senha do Administrador</legend>
+                <div class="form-group">
+                  <label for="input-new-password">Nova Senha Mestre</label>
+                  <input type="password" id="input-new-password" class="form-input" placeholder="Deixe em branco para manter a senha atual" autocomplete="new-password" />
+                </div>
+              </fieldset>
+            </div>
 
             <div class="modal-footer">
-              <button type="button" id="btn-reset-default" class="btn btn-danger-soft">Restaurar Padrão</button>
+              <button type="button" id="btn-reset-default" class="btn btn-danger-soft">Restaurar Padrão Oficial</button>
               <div class="modal-footer-actions">
                 <button type="button" id="btn-cancel-edit" class="btn btn-secondary">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" class="btn btn-primary">Salvar Todas as Seções</button>
               </div>
             </div>
           </form>

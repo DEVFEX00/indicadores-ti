@@ -1,82 +1,65 @@
-# 📊 Dashboard de Indicadores do TI (Web App Editável)
+# 📊 Indicadores Departamento TI - Landing Page Executiva Editável
 
-Dashboard executivo moderno com tema dark & neon green para acompanhamento mensal de métricas e chamados do departamento de Tecnologia da Informação.
+Landing page executiva de alta performance e design sofisticado para acompanhamento de todos os indicadores estratégicos e operacionais do departamento de Tecnologia da Informação.
 
-O projeto foi transformado em um **Web App completo**, pronto para ser hospedado no **Vercel**, **GitHub Pages** ou **Netlify**, com controle de visualização pública e modo de edição restrito.
-
----
-
-## 🚀 Funcionalidades
-
-- **Visualização Pública Limpa**:
-  - Quando publicado em plataformas como a **Vercel**, os visitantes comuns veem apenas o painel interativo com os indicadores atualizados.
-  - O modo de edição requer a senha administrativa mestre.
-- **Modo Editor Interno Completo**:
-  - Edição do título, subtítulo, selo de categoria e meta percentual do departamento (ex: 80%).
-  - Adição, edição e remoção de colaboradores (Cargo, Nome, Chamados Abertos, Chamados Resolvidos).
-  - Cálculo automático e em tempo real das taxas individuais e taxa geral da equipe.
-  - Opção para alterar a senha de acesso administrativo.
-- **Persistência de Dados**:
-  - Os dados ficam salvos automaticamente no navegador (`localStorage`).
-- **Exportação & Importação (Backup JSON)**:
-  - Permite exportar a configuração atual em arquivo `.json`.
-  - Permite importar arquivos `.json` em outro navegador ou computador com 1 clique.
-- **Design Moderno e Responsivo**:
-  - Totalmente adaptado para monitores, tablets e smartphones.
+O projeto conta com diferenciação cromática por seção (paletas exclusivas com iluminação radial e cards translúcidos), dados consolidados oficiais (base Outubro) e uma central de edição completa, onde **todos os textos, títulos, números, tabelas, projetos e análises de performance** podem ser editados e salvos diretamente no navegador como no Google Docs, com persistência e proteção por senha mestre.
 
 ---
 
-## 🔐 Acesso ao Modo Editor
+## 🎨 Seções da Landing Page & Paletas de Cores
+
+1. **Visão Geral / Hero**:
+   - Banner de apresentação com selo executivo e menu de navegação rápida direto para qualquer seção.
+2. **Certificados** *(Tonalidades de Cinza / Platina / Grafite)*:
+   - Indicadores de pedidos entregues (clientes), certificados emitidos e pedidos em situação de aguardo.
+   - Resumo da performance com pontos positivos e pontos de atenção.
+3. **Marketing** *(Tonalidades de Azul / Ciano Profundo)*:
+   - Indicadores consolidados de leads de e-mail (orgânico), WhatsApp e tráfego pago.
+   - Tabela detalhada de campanhas executadas com volumes e observações.
+   - Resumo de performance com análise comparativa e pontos de atenção.
+4. **Tickets** *(Verde Neon Oficial - 100% Preservado)*:
+   - Hero com produtividade e colaboradores do departamento.
+   - Painel com taxa do departamento vs meta (acima de 80%), chamados abertos/resolvidos e progresso visual.
+   - Grid individual de colaboradores (Clever, Kauan, Frank, Pedro) com métricas e barras de progresso.
+   - Tabela de ciclos (Ciclo 1 a Ciclo 4) e resumo da performance.
+5. **Comunidades** *(Tonalidades de Roxo / Violeta)*:
+   - Indicadores de inscritos na página de conversão (RD Station) e membros ativos nos grupos de WhatsApp (Comunidade Líderes FEX).
+   - Resumo de performance com taxa de crescimento e retenção.
+6. **Sistemas e IA** *(Tonalidades de Âmbar / Laranja Tecnológico)*:
+   - Cards executivos de projetos: FEX Corp, JACAD (novo sistema acadêmico), UNICO SKILL & FEX Hub Matrículas, Sólides (LXP) e App FEX Comercial.
+   - Badges de status (Concluído/Alinhado, Em Andamento, Pausado) com descrição do que foi planejado e realizado.
+7. **Planejamento** *(Tonalidades de Esmeralda / Teal)*:
+   - Roadmap de entregas e metas do próximo ciclo divididas em: *Campanhas & Aquisição*, *Sistemas & Infraestrutura* e *Operações & Atendimento*.
+
+---
+
+## 🔐 Modo Editor Total (Interno)
 
 - **Senha Padrão Inicial**: `admin123`
-- *Dica:* Você pode alterar a senha a qualquer momento abrindo o editor, inserindo uma nova senha no campo correspondente e salvando.
+- Acessível no botão **"Acesso Editor"** no canto superior direito.
+- Organizado em abas dedicadas para cada seção:
+  - Adicione, altere ou remova campanhas de marketing, membros da equipe, projetos de sistemas e itens de planejamento.
+  - Altere textos de resumo de performance e métricas em tempo real.
+  - Opção para alterar a senha administrativa.
+- **Backup JSON**: Exporte todos os dados consolidados do mês em 1 clique e importe quando quiser.
 
 ---
 
-## 🛠️ Como Rodar Localmente
+## ⚡ Como Rodar Localmente
 
-Se você deseja testar localmente antes de publicar:
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/SEU_USUARIO/dashboard-indicadores-ti.git
-   cd dashboard-indicadores-ti
-   ```
-
-2. Abra o arquivo `index.html` em qualquer navegador:
-   - Dê um duplo clique no arquivo `index.html`, ou use a extensão *Live Server* do VS Code, ou execute:
-   ```bash
-   npx serve .
-   ```
-
----
-
-## 🌐 Como Publicar na Vercel
-
-1. Crie um novo repositório no seu GitHub (ex: `dashboard-indicadores-ti`).
-2. Faça o push dos arquivos para o GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: Dashboard de TI editavel"
-   git branch -M main
-   git remote add origin https://github.com/SEU_USUARIO/dashboard-indicadores-ti.git
-   git push -u origin main
-   ```
-3. Acesse [vercel.com](https://vercel.com) e faça login.
-4. Clique em **"Add New Project"** e selecione o repositório importado.
-5. Deixe as opções padrão e clique em **Deploy**.
-6. Pronto! A Vercel criará um link público para seu dashboard.
-
----
-
-## 📁 Estrutura de Arquivos
-
+Dê um duplo clique no arquivo:
 ```text
-├── index.html            # Estrutura HTML do Dashboard e do Modal Administrativo
-├── style.css             # Estilos CSS, temas e responsividade
-├── app.js                # Lógica de cálculo, persistência e autenticação
-├── package.json          # Metadados do projeto
-├── .gitignore            # Arquivos ignorados pelo Git
-└── README.md             # Instruções e documentação
+iniciar.bat
 ```
+Ele abrirá automaticamente o navegador em **`http://localhost:3000`**.
+
+---
+
+## 🌐 Publicação no GitHub e Vercel
+
+```bash
+git add .
+git commit -m "feat: landing page completa com seções genericas e paletas cromáticas"
+git push origin main
+```
+Na **Vercel**, conecte o repositório e clique em **Deploy**. A página ficará disponível publicamente em modo de apenas leitura para visitantes, com acesso de edição restrito pela senha mestre!
